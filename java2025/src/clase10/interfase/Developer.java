@@ -2,7 +2,7 @@ package clase10.interfase;
 
 import java.math.BigDecimal;
 
-public class Developer extends Empleado{
+public class Developer extends Empleado implements Adicionable{
     private BigDecimal horasExtra;
 
     public Developer(String nombre, BigDecimal salarioBase, BigDecimal horasExtra) {
@@ -12,6 +12,11 @@ public class Developer extends Empleado{
 
     @Override
     public BigDecimal calcularSalarioTotal() {
-        return this.salarioBase.add(this.horasExtra.multiply(new BigDecimal(50)));
+        return this.salarioBase.add(calcularAdicional());
+    }
+
+    @Override
+    public BigDecimal calcularAdicional() {
+        return this.horasExtra.multiply(new BigDecimal(50));
     }
 }

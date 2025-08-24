@@ -2,7 +2,7 @@ package clase10.interfase;
 
 import java.math.BigDecimal;
 
-public class Gerente extends Empleado implements ElegibleParaBono{
+public class Gerente extends Empleado implements Adicionable{
     private BigDecimal bonoPorcentaje;
 
     public Gerente(String nombre, BigDecimal salarioBase, BigDecimal bonoPorcentaje) {
@@ -12,11 +12,11 @@ public class Gerente extends Empleado implements ElegibleParaBono{
 
     @Override
     public BigDecimal calcularSalarioTotal() {
-        return this.salarioBase.add(calcularBono());
+        return this.salarioBase.add(calcularAdicional());
     }
 
     @Override
-    public BigDecimal calcularBono() {
+    public BigDecimal calcularAdicional() {
         return this.salarioBase.
                 multiply(this.bonoPorcentaje.divide(new BigDecimal(100)));
     }
